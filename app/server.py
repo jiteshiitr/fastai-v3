@@ -8,6 +8,7 @@ from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
+import json
 
 export_file_url = 'https://drive.google.com/uc?export=download&id=1C8Sj6KCLvajZPyqAg2z5fLDKuulePiCS'
 export_file_name = 'export3.pkl'
@@ -43,6 +44,11 @@ async def setup_learner():
         else:
             raise
 
+            
+
+async def str_to_dict(img_str):
+    img_dict = json.loads(img_str) 
+    return (img_dict)
 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
@@ -59,7 +65,7 @@ async def homepage(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     img_data = await request.form()
-    img_bytes = await (img_data['file'].read())
+    img_bytes = await (str_to_dict(img_data)['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
     return JSONResponse({'result': str(prediction)})
