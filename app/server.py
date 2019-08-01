@@ -8,9 +8,11 @@ from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
+import json
 
 export_file_url = 'https://drive.google.com/uc?export=download&id=1KcPFIc0ZsSyTTQwQ-rhc853WD1iK92NX'
 export_file_name = 'CattleRec_Resnet18.pkl'
+
 
 classes = ['Balwindr C2', 'Gursewk CL11', 'Gursewk CL12', 'Gursewk CL3', 'Gursewk CL4', 'Gursewk CL5', 'Gursewk Shamdoo CL 2', 
 'Gursewk Shamdoo CL 3', 'Gursewk Shamdoo CL 4', 'Gursewk Shamdoo CL 8', 'Jaswnt CL 2', 'Jaswnt CL 3', 'Lovdp CL 1', 'mnpreet Cl 8', 
@@ -46,6 +48,11 @@ async def setup_learner():
         else:
             raise
 
+            
+
+async def str_to_dict(img_str):
+    img_dict = json.loads(img_str) 
+    return (img_dict)
 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
@@ -62,7 +69,8 @@ async def homepage(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     img_data = await request.form()
-    img_bytes = await (img_data['file'].read())
+    print(img_data)
+    img_bytes = await (str_to_dict(img_data)['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
     return JSONResponse({'result': str(prediction)})
