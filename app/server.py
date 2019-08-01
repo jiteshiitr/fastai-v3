@@ -9,10 +9,13 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=116hU9MUULX_IDfLUYuSmv-ZR5snVKW5i'
-export_file_name = 'PlantVillage_Resnet101.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1KcPFIc0ZsSyTTQwQ-rhc853WD1iK92NX'
+export_file_name = 'CattleRec_Resnet18.pkl'
 
-classes = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy', 'Blueberry___healthy', 'Cherry_(including_sour)___Powdery_mildew', 'Cherry_(including_sour)___healthy', 'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)__Common_rust', 'Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy, Grape___Black_rot', 'Grape___Esca_(Black_Measles)', 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)', 'Grape___healthy, Orange___Haunglongbing_(Citrus_greening)', 'Peach___Bacterial_spot', 'Peach___healthy', 'Pepper, _bell___Bacterial_spot', 'Pepper,_bell___healthy', 'Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy', 'Raspberry___healthy', 'Soybean___healthy', 'Squash___Powdery_mildew', 'Strawberry___Leaf_scorch', 'Strawberry___healthy', 'Tomato___Bacterial_spot', 'Tomato___Early_blight', 'Tomato___Late_blight', 'Tomato___Leaf_Mold', 'Tomato___Septoria_leaf_spot', 'Tomato___Spider_mites Two-spotted_spider_mite', 'Tomato___Target_Spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Tomato_mosaic_virus', 'Tomato___healthy']
+classes = ['Balwindr C2', 'Gursewk CL11', 'Gursewk CL12', 'Gursewk CL3', 'Gursewk CL4', 'Gursewk CL5', 'Gursewk Shamdoo CL 2', 
+'Gursewk Shamdoo CL 3', 'Gursewk Shamdoo CL 4', 'Gursewk Shamdoo CL 8', 'Jaswnt CL 2', 'Jaswnt CL 3', 'Lovdp CL 1', 'mnpreet Cl 8', 
+'mnpreet cl 10', 'mohan cl 1', 'mohan cl 10', 'mohan cl 11', 'mohan cl 12', 'mohan cl 13', 'mohan cl 14', 'mohan cl 15', 'mohan cl 16', 
+'mohan cl 17', 'mohan cl 18', 'mohan cl 19', 'mohan cl 2', 'mohan cl 20', 'mohan cl 21', 'mohan cl 3', 'mohan cl 4', 'mohan cl 5', 'mohan cl 6', 'mohan cl 8', 'mohan cl 9', 'ramtej cl10', 'ramtej cl12', 'ramtej cl13', 'ramtej cl14', 'ramtej cl15', 'ramtej cl16', 'ramtej cl17', 'ramtej cl18','ramtej cl19', 'ramtej cl2', 'ramtej cl20', 'ramtej cl22', 'ramtej cl23', 'ramtej cl3', 'ramtej cl4', 'ramtej cl5', 'ramtej cl6', 'ramtej cl7', 'ramtej cl8','ramtej cl9']
 
 path = Path(__file__).parent
 
