@@ -10,7 +10,7 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 import json
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1KcPFIc0ZsSyTTQwQ-rhc853WD1iK92NX'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1QSHgV_BeXhhVei4jTPiW-eEjnr23P97H'
 export_file_name = 'CattleRec_Resnet18.pkl'
 
 
@@ -69,6 +69,7 @@ async def analyze(request):
     img_bytes = await (img_data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
+    print(learn.predict(img))
     return JSONResponse({'result': str(prediction)})
 
 
